@@ -22,7 +22,7 @@ class OnBoardingNextButton extends StatelessWidget {
           shape: const CircleBorder(),
           backgroundColor: dark ? TColors.primary : Colors.black,
         ),
-        child: Icon(Iconsax.arrow_right_3),
+        child: Icon(Iconsax.arrow_right_3, color: Colors.white),
       ),
     );
   }
