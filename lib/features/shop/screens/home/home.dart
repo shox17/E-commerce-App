@@ -1,10 +1,10 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce_app/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:ecommerce_app/common/widgets/custom_shapes/containers/search_container.dart';
-import 'package:ecommerce_app/common/widgets/images/t_rounded_image.dart';
+import 'package:ecommerce_app/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:ecommerce_app/common/widgets/texts/heading_section.dart';
 import 'package:ecommerce_app/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:ecommerce_app/features/shop/screens/home/widgets/home_categories.dart';
+import 'package:ecommerce_app/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:ecommerce_app/utils/constants/image_strings.dart';
 import 'package:ecommerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -56,14 +56,18 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(TSizes.defaultSpace),
               child: Column(
                 children: [
-                  CarouselSlider(
-                    items: const [
-                      TRoundedImage(imageUrl: TImages.promoBanner1),
-                      TRoundedImage(imageUrl: TImages.promoBanner2),
-                      TRoundedImage(imageUrl: TImages.promoBanner3),
+                  /// --Promo Slider
+                  TPromoSlider(
+                    banners: [
+                      TImages.promoBanner1,
+                      TImages.promoBanner2,
+                      TImages.promoBanner3,
                     ],
-                    options: CarouselOptions(viewportFraction: 1),
                   ),
+                  const SizedBox(height: TSizes.spaceBtwSections),
+
+                  /// --Popular Products
+                  TProductCardVertical(),
                 ],
               ),
             ),
