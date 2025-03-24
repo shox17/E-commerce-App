@@ -1,10 +1,13 @@
 import 'package:ecommerce_app/common/widgets/texts/section_heading.dart';
+import 'package:ecommerce_app/features/shop/screens/product_details/widgets/bottom_add_to_cart_widget.dart';
 import 'package:ecommerce_app/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:ecommerce_app/features/shop/screens/product_details/widgets/product_detail_image_slider.dart';
 import 'package:ecommerce_app/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:ecommerce_app/features/shop/screens/product_details/widgets/rating_share_widget.dart';
+import 'package:ecommerce_app/features/shop/screens/product_reviews/product_reviews.dart';
 import 'package:ecommerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
@@ -14,6 +17,7 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: TBottomAddToCart(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -49,7 +53,7 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: TSizes.spaceBtwSections),
 
-                  /// Description
+                  /// -- Description
                   TSectionHeading(
                     title: 'Description',
                     showActionButton: false,
@@ -71,17 +75,19 @@ class ProductDetailScreen extends StatelessWidget {
                     ),
                   ),
 
-                  /// Reviews
+                  /// -- Reviews
                   Divider(),
                   const SizedBox(height: TSizes.spaceBtwItems),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TSectionHeading(
                         title: 'Reviews (199)',
                         showActionButton: false,
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed:
+                            () => Get.to(() => const ProductReviewsScreen()),
                         icon: Icon(Iconsax.arrow_right_3, size: 18),
                       ),
                     ],
