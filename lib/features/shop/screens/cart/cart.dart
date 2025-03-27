@@ -1,9 +1,7 @@
 import 'package:ecommerce_app/common/widgets/appbar/appbar.dart';
-import 'package:ecommerce_app/common/widgets/images/t_rounded_image.dart';
-import 'package:ecommerce_app/common/widgets/texts/product_title_text.dart';
-import 'package:ecommerce_app/common/widgets/texts/t_brand_title_text_with_verified_icon.dart';
-import 'package:ecommerce_app/utils/constants/colors.dart';
-import 'package:ecommerce_app/utils/constants/image_strings.dart';
+import 'package:ecommerce_app/common/widgets/products/cart/add_remove_button.dart';
+import 'package:ecommerce_app/common/widgets/products/cart/cart_item.dart';
+import 'package:ecommerce_app/common/widgets/texts/product_price_text.dart';
 import 'package:ecommerce_app/utils/constants/sizes.dart';
 import 'package:ecommerce_app/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -20,49 +18,43 @@ class CartScreen extends StatelessWidget {
         title: Text('Cart', style: Theme.of(context).textTheme.headlineSmall),
         showBackArrow: true,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
-          child: ListView.separated(
-            shrinkWrap: true,
-            separatorBuilder:
-                (_, __) => const SizedBox(height: TSizes.spaceBtwSections),
-            itemCount: 4,
-            itemBuilder:
-                (_, index) => Column(
-                  children: [
-                    Row(
-                      children: [
-                        /// Image
-                        TRoundedImage(
-                          imageUrl: TImages.productImage1,
-                          width: 60,
-                          height: 60,
-                          padding: EdgeInsets.all(TSizes.sm),
-                          backgroundColor:
-                              dark ? TColors.darkerGrey : TColors.light,
-                        ),
-                        const SizedBox(width: TSizes.spaceBtwItems),
+      body: Padding(
+        padding: EdgeInsets.all(TSizes.defaultSpace),
+        child: ListView.separated(
+          shrinkWrap: true,
+          separatorBuilder:
+              (_, __) => const SizedBox(height: TSizes.spaceBtwSections),
+          itemCount: 10,
+          itemBuilder:
+              (_, index) => Column(
+                children: [
+                  TCartItem(),
+                  const SizedBox(height: TSizes.spaceBtwItems),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          const SizedBox(width: 70),
 
-                        /// Title, Price & Size
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            TBrandTitleWithVerifiedIcon(title: 'Nike'),
-                            TProductTitleText(
-                              title: 'Black Sports Shoes',
-                              maxLines: 1,
-                            ),
+                          /// Add Remove Buttons
+                          TProductQuantityWithAddRemoveButton(),
+                        ],
+                      ),
 
-                            /// Attributes
-                            ///
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-          ),
+                      /// -- Product total Price
+                      TProductPriceText(price: '290'),
+                    ],
+                  ),
+                ],
+              ),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(TSizes.defaultSpace),
+        child: ElevatedButton(
+          onPressed: () {},
+          child: Text('Checkout \$290.0'),
         ),
       ),
     );
