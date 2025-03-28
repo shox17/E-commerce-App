@@ -48,13 +48,29 @@ class TCartItem extends StatelessWidget {
                       text: 'Color',
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
+                    WidgetSpan(
+                      child: SizedBox(
+                        width: TSizes.xs,
+                      ), // Add horizontal spacing
+                    ),
+
                     TextSpan(
                       text: 'Green',
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
+                    WidgetSpan(
+                      child: SizedBox(
+                        width: TSizes.xs,
+                      ), // Add horizontal spacing
+                    ),
                     TextSpan(
                       text: 'Size',
                       style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                    WidgetSpan(
+                      child: SizedBox(
+                        width: TSizes.xs,
+                      ), // Add horizontal spacing
                     ),
                     TextSpan(
                       text: 'UK 08',
