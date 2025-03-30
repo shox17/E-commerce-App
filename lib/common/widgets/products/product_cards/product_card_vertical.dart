@@ -64,6 +64,8 @@ class TProductCardVertical extends StatelessWidget {
                       ),
                     ),
                   ),
+
+                  /// -- Favourite Icon Button
                   Positioned(
                     top: 0,
                     right: 0,
