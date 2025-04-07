@@ -9,27 +9,32 @@ class SignupController extends GetxController {
   static SignupController get instance => Get.find();
 
   /// Variables
-  final email = TextEditingController();
+  /// OBservable variable to show/hide password
+  final hidePassword = true.obs;
+
+  /// Observable variable for privacy policy acceptance
+  final privacyPolicy = true.obs;
 
   /// Controller for email input
-  final lastName = TextEditingController();
+  final email = TextEditingController();
 
   /// Controller for last name input
-  final username = TextEditingController();
+  final lastName = TextEditingController();
 
   /// Controller for username input
-  final password = TextEditingController();
+  final username = TextEditingController();
 
   /// Controller for password input
-  final firstName = TextEditingController();
+  final password = TextEditingController();
 
   /// Controller for first name input
-  final phoneNumber = TextEditingController();
+  final firstName = TextEditingController();
 
   /// Controller for phone number input
-  GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
+  final phoneNumber = TextEditingController();
 
   /// Form Key for form validation
+  GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
 
   /// -- SignUp
   Future<void> signup() async {
@@ -46,6 +51,16 @@ class SignupController extends GetxController {
 
       /// Form validation
       if (!signupFormKey.currentState!.validate()) return;
+
+      /// Check if privacy policy is accepted
+      if (!privacyPolicy.value) {
+        TLoaders.warningSnackBar(
+          title: 'Accept Privacy Policy',
+          message:
+              'In order to create an account, you have to read and accept the Privacy Policy & Terms of Use.',
+        );
+        return;
+      }
     } catch (e) {
       /// Show some error to the user
       TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
