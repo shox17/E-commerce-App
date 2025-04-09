@@ -119,7 +119,7 @@ class TSignUpForm extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () async {
-                await controller.signup();
+                return await controller.signup();
               },
               child: Text(TTexts.createAccount),
             ),
