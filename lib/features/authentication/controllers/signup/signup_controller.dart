@@ -6,7 +6,6 @@ import 'package:ecommerce_app/utils/constants/image_strings.dart';
 import 'package:ecommerce_app/utils/helpers/network_manager.dart';
 import 'package:ecommerce_app/utils/popups/full_screen_loader.dart';
 import 'package:ecommerce_app/utils/popups/loaders.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
@@ -105,7 +104,7 @@ class SignupController extends GetxController {
       );
 
       /// Move to Verify Email Screen
-      Get.to(() => const VerifyEmailScreen());
+      Get.to(() => VerifyEmailScreen(email: email.text.trim()));
     } catch (e) {
       /// Remove Loading Indicator
       TFullScreenLoader.stopLoading();
