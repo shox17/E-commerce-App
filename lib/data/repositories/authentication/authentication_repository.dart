@@ -21,6 +21,9 @@ class AuthenticationRepository extends GetxController {
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
 
+  /// Get Authenticated User Data
+  User? get authUser => _auth.currentUser;
+
   /// Called from main.dart on app launch
   @override
   void onReady() {
@@ -29,7 +32,7 @@ class AuthenticationRepository extends GetxController {
   }
 
   /// Function to show Relevant Screen
-  screenRedirect() async {
+  void screenRedirect() async {
     final user = _auth.currentUser;
 
     if (user != null) {
