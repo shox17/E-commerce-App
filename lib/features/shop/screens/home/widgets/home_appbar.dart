@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/common/widgets/appbar/appbar.dart';
+import 'package:ecommerce_app/common/widgets/loaders/shimmer_loader.dart';
 import 'package:ecommerce_app/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:ecommerce_app/features/personalization/controllers/user_controller.dart';
 import 'package:ecommerce_app/utils/constants/colors.dart';
@@ -24,11 +25,8 @@ class THomeAppBar extends StatelessWidget {
           ),
           Obx(() {
             if (controller.profileLoading.value) {
-              return const SizedBox(
-                height: 20,
-                width: 100,
-                child: LinearProgressIndicator(),
-              );
+              /// If the profile is loading, show a shimmer loader
+              return TShimmerLoader(width: 80, height: 15);
             } else {
               return Text(
                 controller.user.value.fullName,
