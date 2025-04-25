@@ -63,6 +63,7 @@ dependencies:
   firebase_storage: ^12.4.3
   google_sign_in: ^6.3.0
   shimmer: ^3.0.0
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:

@@ -48,8 +48,8 @@ class ReAuthLoginForm extends StatelessWidget {
                       suffixIcon: IconButton(
                         icon: Icon(
                           controller.hidePassword.value
-                              ? Iconsax.eye
-                              : Iconsax.eye_slash,
+                              ? Iconsax.eye_slash
+                              : Iconsax.eye,
                         ),
                         onPressed:
                             () =>
